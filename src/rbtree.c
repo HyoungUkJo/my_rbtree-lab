@@ -184,11 +184,41 @@ node_t *rbtree_min(const rbtree *t) {
 
 node_t *rbtree_max(const rbtree *t) {
   // TODO: implement find
-  return t->root;
+  node_t *searchNil = t->root;
+  node_t *findMin  = t->nil;
+
+  while(searchNil != t->nil){
+    searchNil = findMin;
+    searchNil = searchNil->right;
+  }
+
+  return findMin;
+}
+
+void node_trance(rbtree *t, node_t *p){
+  
 }
 
 int rbtree_erase(rbtree *t, node_t *p) {
   // TODO: implement erase
+  // successor가 뭐인지, 삭제되는 색이 무엇인지
+   // 1.삭제하고 삭재 후 올 색이 뭐인지 확인
+   // 2. 누구한테 extrablack이 갈 것인지
+  node_t *successor = p;
+  node_t *extraBlack = NULL;
+
+  color_t successColor = successor->color;
+
+  // 노드의 개수를 확인 -> 삭제되는 색이 무엇인지 확인
+  // 삭제 후 노드 정렬
+
+  if (p->right ==t->nil){
+    //삭제될 색에 extrablack 부여
+    extraBlack = p->right;
+    // successor를 삭제된 노드로 대체 하는 함수
+    
+  }
+
   return 0;
 }
 
